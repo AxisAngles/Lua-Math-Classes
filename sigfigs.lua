@@ -2,13 +2,16 @@
 
 --A simple significant figures class for Lua.
 --Plays well with numbers, and is pretty short and simple. Optimized for LuaJIT.
+--To make a new sigfig number, do newsigfig(num,sigfigs)
 --Supports unm, add, sub, mod, mul, div, pow, tostring, concat, and all single-argument math functions
 --To call a math function on a sigfig, do sigfig.funcname
 --Example: newsigfig(5,1).sin
 
+--The getrg function could be replaced with something faster. But it's quite simple and I like that.
+
 local newsigfig do
 	local defaultsig=16
-	local mingr=-1e-172
+	local mingr=-1024
 
 	local setmt=setmetatable
 	local format=string.format
@@ -36,7 +39,7 @@ local newsigfig do
 	function newsigfig(num,sig,gr)
 		local self={}
 		self.num=num
-		self.sig=sig or defaultsig--lel idk again
+		self.sig=sig or defaultsig
 		self.gr=gr or getgr(num)
 		return setmt(self,meta)
 	end
