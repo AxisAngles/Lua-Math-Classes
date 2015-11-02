@@ -2,6 +2,7 @@
 
 --This is one of my more 'proper' classes with actual documentation.
 --Plays well with numbers.
+--Optimized for Lua
 
 --[[
 Constructor Functions
